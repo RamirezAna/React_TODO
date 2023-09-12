@@ -14,10 +14,10 @@
     height: 4.4rem;
     font-size: 2.5em;
     border: none;
-    background-color: #7996f5;
+    background-color: blueviolet;
     cursor: pointer;
     color: aliceblue;
-    /*   background: url("./assets/circle-check.svg") no-repeat;
+   /*  background: url("./assets/circle-check.svg") no-repeat;
     background-size: 90%;
     background-position: center center; */
   }

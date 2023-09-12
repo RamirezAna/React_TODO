@@ -1,3 +1,6 @@
+import "./TodoSearch.css";
+
+
 function TodoSearch(){
     return (
       <div className="search-container">
