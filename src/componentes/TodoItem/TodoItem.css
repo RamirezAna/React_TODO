@@ -50,3 +50,13 @@
     background-size: 90%;
     background-position: center center;
   }
+
+  .Icon-check--active {
+    color: #4caf50;
+  }
+  
+  .Icon-delete {
+    position: absolute;
+    top: -24px;
+    right: 0;
+  }

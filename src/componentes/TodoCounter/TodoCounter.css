@@ -1,12 +1,11 @@
-.title {
-    font-size: 24px;
-    text-align: center;
-    margin: 0;
-    padding: 48px;
-    font-weight: 400;
-    color: blueviolet;
-  }
-  
-  .title span {
-    font-weight: 600;
-  }
+.TodoCounter {
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+  padding: 48px;
+  font-weight: normal;
+}
+
+.TodoCounter span {
+  font-weight: bold;
+}

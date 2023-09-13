@@ -4,7 +4,7 @@ import "./TodoSearch.css";
 function TodoSearch(){
     return (
       <div className="search-container">
-        <input placeholder="Ingresa el valor aqui"/>
+        <input placeholder="Ingresar aqui la tarea"/>
      </div>
     );
   }
