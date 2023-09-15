@@ -6,17 +6,32 @@ import { CreateTodoButton } from './componentes/CreateTodoButton/CreateTodoButto
 
 import './App.css';
 import React from 'react';
-
+/*
 const   defaultTodos = [
   {text:"Limpiar el patio", completed:true},
   {text:"Lavar los cubiertos", completed:false} ,
-  {text:"Cocinar bien rico", completed:true},
+  {text:"Cocinar bien rico", completed:true},  
 ]
+ localStorage.setItem('TODOS_v1', defaultTodos);
+*/
+
+ 
+ // localStorage.removeItem('TODOS_v1');
 
 function App() {
+//aca en una variable ponemos lo datos que se tiene el localstore para pasar en TODOs
+const localStorageTodos = localStorage.getItem('TODOS_v1');
+let parsedTodos;
+if (!localStorageTodos){
+  localStorage.setItem('TODOS_v1', JSON.stringify([]))
+  parsedTodos = [];
+}else{
+  parsedTodos = JSON.parse(localStorageTodos)
+}
+
 
 //conteo TODO: le pasamos por defecto los defaultTodos declarado mas arriba
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(parsedTodos);
 
 //conteo de completados: que solamente me traiga los todo con completed true
   const completedTodos = todos.filter(todo => todo.completed).length; 
@@ -35,6 +50,11 @@ console.log('lo que busca el usuario es: '+searchValue);
       return todoText.includes(searchText)
     }
   )
+  
+const saveTodos = (newTodos) => {
+  localStorage.setItem('TODOS_v1', JSON.stringify(newTodos));
+  setTodos(newTodos);
+};
 
 // creamos aquie la logica del completado
 const completeTodo = (text) => {
@@ -43,7 +63,7 @@ const completeTodo = (text) => {
     (todo) => todo.text == text
   );//en sete todoIndex obtenemos el index
   newTodos[todoIndex].completed = true;//aca es en donde le decimos que esta completado 
-  setTodos(newTodos);
+  saveTodos(newTodos);
 };
 
 const deleteTodo = (text) => {
@@ -52,7 +72,7 @@ const deleteTodo = (text) => {
     (todo) => todo.text == text
   );
   newTodos.splice(todoIndex, 1);//aca eliminamos el TODOs con el splice
-  setTodos(newTodos);
+  saveTodos(newTodos);
 }
   return (  
     <>
