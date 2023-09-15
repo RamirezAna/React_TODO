@@ -15,33 +15,64 @@ const   defaultTodos = [
 
 function App() {
 
-  //aca declaramos para el conteo de TODO
-  //le pasamos por defecto los defaultTodos declarads mas arriba
+//conteo TODO: le pasamos por defecto los defaultTodos declarado mas arriba
   const [todos, setTodos] = React.useState(defaultTodos);
 
-    const completedTodos = todos.filter(todo => todo.completed).length; //que solamente me traiga los todo con completed true
-    const totalTodos=todos.length;//obtener el total
+//conteo de completados: que solamente me traiga los todo con completed true
+  const completedTodos = todos.filter(todo => todo.completed).length; 
+  const totalTodos=todos.length;//obtener el total de TODOs
 
-   //se le pasa como arrays porque tiene en cuenta 2 parametros
-   //porque el estado no solo de consume si no tambien se actualiza
-  //ej.(la variable no es fijo)ejemplo:  estado => el que registra el usuario, setEstado => en donde se actualiza lo que va registrando el usuario
-  const [search, setSearch] = React.useState('');
-  console.log('lo que busca el usuario es: '+search);
+  //buscador del campo txt
+const [searchValue, setSearchValue] = React.useState('');
+console.log('lo que busca el usuario es: '+searchValue);
 
+// buscar TODOs
+  const searchedTodos = todos.filter (
+    (todo) => {//con el return hacemos que nos retorne todo los datos que se parezca en la busqueda
+      //toLowerCase => convertimos en minuscula para que no tenfa diferencias en la busqueda      
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText)
+    }
+  )
 
+// creamos aquie la logica del completado
+const completeTodo = (text) => {
+  const newTodos = [...todos]; //con estos 3 puntitos ... decimos que queremos que nos realice una copia de lo que tenga TODOs
+  const todoIndex = newTodos.findIndex(
+    (todo) => todo.text == text
+  );//en sete todoIndex obtenemos el index
+  newTodos[todoIndex].completed = true;//aca es en donde le decimos que esta completado 
+  setTodos(newTodos);
+};
+
+const deleteTodo = (text) => {
+  const newTodos = [...todos]; //con estos 3 puntitos ... decimos que queremos que nos realice una copia de lo que tenga TODOs
+  const todoIndex = newTodos.findIndex(
+    (todo) => todo.text == text
+  );
+  newTodos.splice(todoIndex, 1);//aca eliminamos el TODOs con el splice
+  setTodos(newTodos);
+}
   return (  
     <>
       <TodoCounter total={totalTodos} completed={completedTodos}/>
       <TodoSearch
       //aca le pasamos las variables a TodoSearch
-      search={search}
-      setSearch={setSearch}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
 
       />
 
       <TodoList>
-        {defaultTodos.map(todo =>(
-          <TodoItem key={todo.text} text={todo.text}/>))
+        {searchedTodos.map(todo =>(
+          <TodoItem 
+          key={todo.text} 
+          text={todo.text}
+          completed={todo.completed}
+          onComplete={() => completeTodo(todo.text)} //encapsulamos una funcion en otra () => (porque aca no podemos enviar una funcion directa como ejecutada)
+          onDelete={() => deleteTodo(todo.text)} //aca hacemos la eliminacion misma logica que la de arriba
+          />))
         }
       </TodoList>
   

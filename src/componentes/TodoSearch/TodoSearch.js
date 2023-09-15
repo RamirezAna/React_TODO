@@ -4,8 +4,8 @@ import "./TodoSearch.css";
 
 function TodoSearch({
   //aca es en donde recibimos las variables de la clase App.js
-  search, 
-  setSearch
+  searchValue, 
+  setSearchValue
 }){
  
     return (
@@ -13,10 +13,10 @@ function TodoSearch({
         <input 
         placeholder="Ingresar aqui la tarea"
         className="TodoSearch"
-        value={search}//el valor de la busqueda
+        value={searchValue}//el valor de la busqueda
         onChange={(event) => {
           console.log('escribiste en el search')
-          setSearch(event.target.value);
+          setSearchValue(event.target.value);
         }}
         />
      </div>
