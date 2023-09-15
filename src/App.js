@@ -14,14 +14,14 @@ const   defaultTodos = [
 ]
  localStorage.setItem('TODOS_v1', defaultTodos);
 */
-
- 
- // localStorage.removeItem('TODOS_v1');
+// localStorage.removeItem('TODOS_v1');
 
 function App() {
 //aca en una variable ponemos lo datos que se tiene el localstore para pasar en TODOs
 const localStorageTodos = localStorage.getItem('TODOS_v1');
 let parsedTodos;
+
+//le ponemos el arrays vacion p/ que no se rompa la app
 if (!localStorageTodos){
   localStorage.setItem('TODOS_v1', JSON.stringify([]))
   parsedTodos = [];
@@ -50,7 +50,8 @@ console.log('lo que busca el usuario es: '+searchValue);
       return todoText.includes(searchText)
     }
   )
-  
+ 
+//  esto ya seria segun lo que tengamos en localStorage.
 const saveTodos = (newTodos) => {
   localStorage.setItem('TODOS_v1', JSON.stringify(newTodos));
   setTodos(newTodos);
@@ -74,6 +75,7 @@ const deleteTodo = (text) => {
   newTodos.splice(todoIndex, 1);//aca eliminamos el TODOs con el splice
   saveTodos(newTodos);
 }
+
   return (  
     <>
       <TodoCounter total={totalTodos} completed={completedTodos}/>
