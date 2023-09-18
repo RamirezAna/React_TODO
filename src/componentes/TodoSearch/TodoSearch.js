@@ -1,12 +1,12 @@
 import React from "react";
 import "./TodoSearch.css";
+import { TodoContext } from '../TodoContext/TodoContext';
 
-
-function TodoSearch({
-  //aca es en donde recibimos las variables de la clase App.js
-  searchValue, 
-  setSearchValue
-}){
+function TodoSearch( ){
+  const {
+    searchValue, 
+    setSearchValue
+  } = React.useContext(TodoContext);
  
     return (
       <div className="search-container">
