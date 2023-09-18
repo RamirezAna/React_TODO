@@ -16,13 +16,27 @@ function TodoProvider ({children}) {
         const [searchValue, setSearchValue] = React.useState('');
         console.log('lo que busca el usuario es: '+searchValue);
 
+        //aca creamos el control del modal en donde openModal empieza con false
+        const [openModal, setOpenModal] = React.useState(false);
+
         const searchedTodos = todos.filter (
             (todo) => {
             const todoText = todo.text.toLowerCase();
             const searchText = searchValue.toLowerCase();
             return todoText.includes(searchText)
             }
-        )
+        );
+
+        const addTodo=(text) =>{
+            const newTodos = [...todos]; //con estos 3 puntitos ... decimos que queremos que nos realice una copia de lo que tenga TODOs
+ 
+            newTodos.push({
+                text,
+                completed: false,
+            });
+           
+            saveTodos(newTodos);
+        };
         
         const completeTodo = (text) => {
         const newTodos = [...todos]; //con estos 3 puntitos ... decimos que queremos que nos realice una copia de lo que tenga TODOs
@@ -54,6 +68,9 @@ function TodoProvider ({children}) {
             searchedTodos,
             completeTodo,
             deleteTodo,
+            openModal, 
+            setOpenModal,
+            addTodo, //para agregar TODOs
         }}> 
             {children}
         </TodoContext.Provider>
