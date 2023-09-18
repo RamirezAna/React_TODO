@@ -4,16 +4,9 @@ import "./TodosLoading.css"
 
 function TodosLoading(){
  
-    return (
-        <div className='LoadingTodo-container'>
-          <span
-          className='LoadingTodo-completeIcon'>
-          </span>
-          <p className='LoadingTodo-text'></p>
-          <span
-          className='LoadinTodo-deleteIcon'></span>
-        </div>
-      );
+     return (
+        <div className="loadingProcess"></div>
+     );
   }
 
   export {TodosLoading};
