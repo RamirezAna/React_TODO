@@ -1,61 +1,60 @@
-.TodoItem-loading{
-  list-style-type: none;
+.LoadingTodo-container {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 90%;
-  margin: 10px auto;
-  padding: 10px;
-  /* border: 1px solid darkgray; */
-  box-shadow: 0px 1px 4px 0 LightBlue;
+  margin-top: 24px;
+  box-shadow: 0px 5px 50px rgba(32, 35 41 0.15);
   border-radius: 10px;
-  
-  background: linear-gradient(90deg, rgba(250,250,250,1), rgb(200, 199, 199));
+  padding: 12px 0;
+}
+
+.LoadingTodo-text {
+  margin: 24px 0 24px 24px;
+  Width: calc(100% - 120px);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.LoadingTodo-completeIcon,
+.LoadinTodo-deleteIcon {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  height: 48px;
+  width: 48px;
+}
+
+.LoadingTodo-completeIcon {
+  position: absolute;
+  left: 12px;
+}
+
+.LoadinTodo-deleteIcon {
+  position: absolute;
+  top: -24px;
+  right: 0;
+}
+
+.LoadingTodo-container,
+.LoadingTodo-completeIcon,
+.LoadinTodo-deleteIcon {
+  background: linear-gradient(90deg, rgba(250, 250, 250, 1), rgb(200, 199, 199));
   background-size: 400% 400%;
   animation: loadingAnimation 3s ease-in-out infinite;
 }
-
+  
 @keyframes loadingAnimation {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.TodoItem-p-loading {
-  width: 100%;
-  text-align: center;
-}
-
-.cat-0 {
-  border-left: 10px solid gray;
-}
-
-.loader-1{
-  color: gray;
-  display: inline-block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  line-height: 16px;
-  font-weight: 400;
-  position: relative;
-}
-.loader-1:after{
-  content: 'Cargando datos... ';
-  position: relative;
-  z-index: 5;
-  vertical-align:super;
-}
-.loader-1:before{
-  content: '';
-  height: 6px;
-  border: 1px solid;
-  border-radius: 10px;
-  width: 100%;
-  position: absolute;
-  bottom: 0px;
-  background: linear-gradient(#FF3D00 100%, transparent 0) no-repeat;
-  background-size: 0% auto;
-  animation: 10s lineGrow linear infinite;
-}
-
-@keyframes lineGrow {to {  background-size: 100% auto}}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+};

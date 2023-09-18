@@ -5,14 +5,14 @@ import "./TodosLoading.css"
 function TodosLoading(){
  
     return (
-        <>
-          <li className={`TodoItem-loading cat-0`}>
-            
-            <p className={`TodoItem-p-loading`}>
-            <span className="loader-1"></span>
-            </p>
-          </li>
-        </>
+        <div className='LoadingTodo-container'>
+          <span
+          className='LoadingTodo-completeIcon'>
+          </span>
+          <p className='LoadingTodo-text'></p>
+          <span
+          className='LoadinTodo-deleteIcon'></span>
+        </div>
       );
   }
 
