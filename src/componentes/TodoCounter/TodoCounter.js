@@ -9,7 +9,7 @@ const {
 } = React.useContext(TodoContext);
 
   return (
-    totalTodos == completedTodos & totalTodos != 0?    
+    totalTodos === completedTodos & totalTodos !== 0?    
     <h1 className="TodoCounter">
       Felicitaciones, has completado todos los TODOs!!!
     </h1>

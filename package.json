@@ -28,5 +28,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+    "homepage": "/Users/user/Desktop/platzi/Curso de React/react/React_TODO/build/"
 }
